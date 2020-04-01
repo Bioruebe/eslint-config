@@ -1,0 +1,26 @@
+{
+  "name": "@bioruebe/eslint-config",
+  "version": "1.0.0",
+  "description": "This package provides Bioruebe's eslint configuration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bioruebe/eslint-config.git"
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig"
+  ],
+  "author": "bioruebe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bioruebe/eslint-config/issues"
+  },
+  "homepage": "https://github.com/bioruebe/eslint-config",
+  "peerDependencies": {
+    "eslint": ">= 6"
+  }
+}
