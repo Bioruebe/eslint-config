@@ -1,7 +1,10 @@
 module.exports = {
 	"extends": "eslint:all",
 	"parserOptions": {
-		"ecmaVersion": 6
+		"ecmaVersion": 2017
+	},
+	"env": {
+		"es6": true
 	},
 	"rules": {
 		// Possible Errors
@@ -10,6 +13,7 @@ module.exports = {
 		"no-constant-condition": "warn",				// Useful for debugging, e.g. replace condition with true
 		"no-empty": "warn",								// Empty blocks might exist while actively developing and making a test build to check a specific feature
 		"no-extra-parens": 0,							// Extra parenthesis can be useful to make calculations easier to read for humans and are unulikely to cause bugs
+		"no-prototype-builtins": "warn",				// This is only a problem for user-submitted objects
 		"no-unreachable": "warn",						// Useful for debugging, e.g. skip a part of the code while testing
 		"no-unsafe-negation": ["error", {
 			"enforceForOrderingRelations": true
@@ -19,7 +23,7 @@ module.exports = {
 		}],
 		
 		// Best Practices
-		"consistent-return": "warn",					// See 'no-unreachable'
+		"consistent-return": 0,							// This rule often trigers with 'if (error) return;' style code
 		"curly": 0,										// No rule supports the prefered brace style
 		"default-case": 0,								// Default case might be omitted without a comment
 		"dot-location": "warn",
@@ -44,22 +48,21 @@ module.exports = {
 			"hoist": "functions",
 			"allow": [] 
 		}],
-		"no-undef": ["warn", {
+		"no-undef": ["error", {
 			"typeof": true
 		}],
 		"no-undefined": 0,								// We use the alternative way (no-global-assign, no-shadow-restricted-names) to prevent shadowing undefined
-		"no-unused-vars": "warn",
+		"no-unused-vars": ["warn", { "args": "after-used" }],
 		"no-use-before-define": ["error", "nofunc"],	// 'Function declarations are hoisted, so it's safe'
-		
-		// Node.js and CommonJS
-		"no-sync": "warn",
 		
 		// Stylistic Issues
 		"array-bracket-newline": ["error", "consistent"],
 		"array-element-newline": 0,
 		"brace-style": ["error", "stroustrup"],
+		"camelcase": "warn",
 		"capitalized-comments": ["warn", "always", {
 			"ignoreConsecutiveComments": true,
+			"ignoreInlineComments": true,
 			"ignorePattern": "console"
 		}],
 		"consistent-this": ["error", "self"],
@@ -83,6 +86,7 @@ module.exports = {
 			"ignoreComments": true
 		}],
 		"line-comment-position": 0,
+		"linebreak-style": "warn",
 		"lines-around-comment": ["warn", {
 			"beforeBlockComment": true,
 			"beforeLineComment": true,
@@ -94,7 +98,7 @@ module.exports = {
 		}],
 		"max-depth": ["warn", 5],
 		"max-len": ["warn", {
-			"code": 175
+			"code": 200
 		}],
 		"max-lines": ["warn", {
 			"max": 300,
@@ -110,6 +114,7 @@ module.exports = {
 		"max-statements": ["warn", 50],
 		"multiline-comment-style": ["error", "separate-lines"],
 		"multiline-ternary": ["error", "always-multiline"],
+		"newline-per-chained-call": ["warn", { "ignoreChainWithDepth": 3 }],
 		"no-bitwise": "warn",
 		"no-continue": 0,
 		"no-inline-comments": 0,
@@ -123,6 +128,7 @@ module.exports = {
 		"no-plusplus": 0,
 		"no-tabs": 0,
 		"no-ternary": 0,
+		"no-trailing-spaces": "warn",
 		"object-curly-spacing": ["error", "always"],
 		"object-property-newline": ["error", {
 			"allowAllPropertiesOnSameLine": true
@@ -130,7 +136,7 @@ module.exports = {
 		"one-var": 0,
 		"padded-blocks": ["warn", "never"],
 		"prefer-exponentiation-operator": 0,
-		"prefer-object-spread": "warn",
+		"prefer-object-spread": 0,
 		"quote-props": ["error", "consistent-as-needed"],
 		"quotes": ["warn", "double", {
 			"avoidEscape": true
